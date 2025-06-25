@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-webdownload.py
+wd.py
 
+Webdownloader  (c) 2025 by Michael Stal
+provided with M.I.T License
 Search and download documents on a given subject by per-extension
 filetype: queries, with engine fallback, UA rotation, and inter-query delays
 to avoid rate-limiting.
@@ -206,9 +208,9 @@ def main():
                     "with engine fallback, UA rotation, and inter-query delays.",
         formatter_class=argparse.RawTextHelpFormatter,
         epilog="Examples:\n"
-               "  webdownload -s \"quantum computing\"\n"
-               "  webdownload -s \"AI\" -m 10 -w 8 -o pdf,docx\n"
-               "  webdownload -s \"ML\" -e bing\n"
+               "  wd -s \"quantum computing\"\n"
+               "  wd -s \"AI\" -m 10 -w 8 -o pdf,docx\n"
+               "  wd -s \"ML\" -e bing\n"
     )
     p.add_argument('-s','--subject',    required=True, help='Search subject text')
     p.add_argument('-d','--destination', help='Output directory')
