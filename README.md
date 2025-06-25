@@ -1,8 +1,10 @@
 # WebDownload
 
+
 A console-based Python tool to search the web for documents on a given subject and download them locally. Supports concurrent downloads, retries with exponential back-off, and optional file-type filtering.
 
 ## Features
+
 
 - **Search**: Scrapes DuckDuckGo HTML results and the results of other search engines (Bing, Google) avoiding API rate limits.
 - **Download**: Streams files and inspects MIME type (via `python-magic`) to ensure only supported types are saved.
@@ -12,7 +14,10 @@ A console-based Python tool to search the web for documents on a given subject a
 - **Filtering**: Optional `--only` flag to limit downloaded file-types (e.g. `--only pdf,docx,md`).
 - **Flexible**: Specify maximum number of documents, custom output directory, etc.
 
+
+
 ## Prerequisites
+
 
 - Python 3.7+
 - **pip** packages:
@@ -23,7 +28,9 @@ A console-based Python tool to search the web for documents on a given subject a
 ```bash
 pip install requests beautifulsoup4 python-magic
 
+
 ## Installation
+
 
 Clone or download this repository, then ensure dependencies are installed:
 
@@ -33,7 +40,9 @@ pip install -r requirements.txt
 	
 (Alternatively, install dependencies manually as shown above.)
 
+
 ## Usage
+
 
 python wd.py -s SUBJECT [OPTIONS]
 
@@ -57,20 +66,35 @@ Show help message and exit.
 python wd.py --help
 
 How to use the new --engine flag
+
+
 ### Default (DuckDuckGo scraping)
+
+
 wd -s "Quantum Computing"
 
+
 ### Use Bing instead
+
+
 wd -s "Quantum Computing" -e bing
 
+
 ### Use Google (may be blocked by Google if scraped too often)
+
+
 wd -s "Quantum Computing" -e google
 
+
 ### Combine with other flags
+
+
 wd -s "AI survey" -e bing -m 10 -w 8 -o pdf,docx
 
 
 ## Examples
+
+
 • Default download (5 files of all supported types):
 python wd.py -s "machine learning"
 
@@ -84,7 +108,10 @@ python wd.py -s "blockchain survey" -o pdf,docx
 • Custom output directory:
 python wd.py -s "covid-19 research" -d ./covid_docs
 
+
 ## How It Works
+
+
 1. Search
 Sends a POST to https://html.duckduckgo.com/html/ and parses result links via BeautifulSoup.
 2. Filter & Download
@@ -96,7 +123,9 @@ Sends a POST to https://html.duckduckgo.com/html/ and parses result links via Be
  • Submits downloads to a ThreadPoolExecutor.
  • On network or I/O errors, retries up to 3 times with exponential back-off (1s, 2s, 4s).
 
+
 ## License
+
 
 MIT © Michael Stal
 
