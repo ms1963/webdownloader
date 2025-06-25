@@ -2,9 +2,9 @@
 from setuptools import setup
 
 setup(
-    name="webdownload",
+    name="wd",
     version="1.0",
-    py_modules=["webdownload"],
+    py_modules=["wd"],
     install_requires=[
         "requests",
         "beautifulsoup4",
@@ -12,7 +12,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "webdownload = webdownload:main",
+            "wd = wd:main",
         ]
     }
 )
