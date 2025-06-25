@@ -33,7 +33,7 @@ pip install -r requirements.txt
 	
 (Alternatively, install dependencies manually as shown above.)
 
-### Usage
+## Usage
 
 python wd.py -s SUBJECT [OPTIONS]
 
@@ -57,16 +57,16 @@ Show help message and exit.
 python wd.py --help
 
 How to use the new --engine flag
-# Default (DuckDuckGo scraping)
+### Default (DuckDuckGo scraping)
 wd -s "Quantum Computing"
 
-# Use Bing instead
+### Use Bing instead
 wd -s "Quantum Computing" -e bing
 
-# Use Google (may be blocked by Google if scraped too often)
+### Use Google (may be blocked by Google if scraped too often)
 wd -s "Quantum Computing" -e google
 
-# Combine with other flags
+### Combine with other flags
 wd -s "AI survey" -e bing -m 10 -w 8 -o pdf,docx
 
 
