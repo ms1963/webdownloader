@@ -23,35 +23,35 @@ A console-based Python tool to search the web for documents on a given subject a
 ```bash
 pip install requests beautifulsoup4 python-magic
 
-Installation
+## Installation
 
 Clone or download this repository, then ensure dependencies are installed:
 
-git clone https://github.com/your-org/webdownload.git
+git clone https://github.com/ms1963/webdownloader.git
 cd webdownload
 pip install -r requirements.txt
-
+	
 (Alternatively, install dependencies manually as shown above.)
 
-Usage
+### Usage
 
 python wd.py -s SUBJECT [OPTIONS]
 
 Required
-	•	-s, --subject
+• -s, --subject
 Search subject (e.g. "quantum computing").
 
 Optional
-	•	-d, --destination
+• -d, --destination
 Output directory. Default: downloads_<YYYYMMDD_HHMMSS>_<uuid>.
-	•	-m, --max
+• -m, --max
 Maximum documents to download. Default: 5.
-	•	-w, --workers
+• -w, --workers
 Number of concurrent download threads. Default: 5.
-	•	-o, --only
+• -o, --only
 Comma-separated list of extensions to download.
 Supported: pdf, doc, docx, md, markdown, html, htm, txt.
-	•	-h, --help
+• -h, --help
 Show help message and exit.
 
 python wd.py --help
@@ -70,34 +70,35 @@ wd -s "Quantum Computing" -e google
 wd -s "AI survey" -e bing -m 10 -w 8 -o pdf,docx
 
 
-Examples
-	•	Default download (5 files of all supported types):
+## Examples
+• Default download (5 files of all supported types):
 python wd.py -s "machine learning"
 
-	•	Specify max and concurrency:
+• Specify max and concurrency:
 python wd.py -s "AI ethics" -m 10 -w 8
 
-	•	Download only PDFs and Word docs:
+• Download only PDFs and Word docs:
 python wd.py -s "blockchain survey" -o pdf,docx
 
-	•	Custom output directory:
+
+• Custom output directory:
 python wd.py -s "covid-19 research" -d ./covid_docs
 
-How It Works
-	1.	Search
+## How It Works
+1. Search
 Sends a POST to https://html.duckduckgo.com/html/ and parses result links via BeautifulSoup.
-	2.	Filter & Download
-	•	Builds a query that includes only the desired filetype: filters.
-	•	Streams each URL, writes to a temporary .part file.
-	•	Uses python-magic to detect MIME and confirm it matches one of the allowed types.
-	•	Renames and keeps only valid files.
-	3.	Concurrency & Retries
-	•	Submits downloads to a ThreadPoolExecutor.
-	•	On network or I/O errors, retries up to 3 times with exponential back-off (1s, 2s, 4s).
+2. Filter & Download
+ • Builds a query that includes only the desired filetype: filters.
+ • Streams each URL, writes to a temporary .part file.
+ • Uses python-magic to detect MIME and confirm it matches one of the allowed types.
+ • Renames and keeps only valid files.
+3. Concurrency & Retries
+ • Submits downloads to a ThreadPoolExecutor.
+ • On network or I/O errors, retries up to 3 times with exponential back-off (1s, 2s, 4s).
 
-License
+## License
 
-MIT © [Your Name or Organization]
+MIT © Michael Stal
 
 
 
